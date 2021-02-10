@@ -1,0 +1,25 @@
+{
+  "name": "to-do-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiuxCode/To-do-in-react.js.git"
+  },
+  "keywords": [],
+  "author": "Sebastian Gil <shiuxcode@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shiuxCode/To-do-in-react.js/issues"
+  },
+  "homepage": "https://github.com/shiuxCode/To-do-in-react.js#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "webpack": "^5.21.2"
+  }
+}
