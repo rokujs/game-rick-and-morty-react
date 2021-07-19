@@ -7,8 +7,8 @@ import Home from "../pages/Home";
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/game" component={Game} />
+      <Route exact path="/" component={Game} />
+      <Route exact path="/game" component={ Home} />
     </Switch>
   </BrowserRouter>
 );

@@ -1,45 +1,36 @@
 import React from "react";
-import { Grid, Paper } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles'
-import { lime } from "@material-ui/core/colors";
 
+import Board from '../components/Board'
 
-import "../styles/pages/game.css";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-    backgroundColor: lime['400']
-  },
-}));
+import "../styles/pages/game.sass";
 
 function Game() {
-  const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Grid 
-      container
-       spacing={3}
-       alignItems='stretch'
-      >
-        <Grid item xs={2}>
-          <Paper className={classes.paper}>xs=12</Paper>
-        </Grid>
-        <Grid item xs={8}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-        <Grid item xs={2}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-        <Grid item xs={10}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-      </Grid>
+    <div className="tile is-ancestor game">
+      <div className="tile is-vertical is-10">
+        <div className="tile">
+          <div className="tile is-parent is-vertical is-2">
+            <article className="tile is-child box">
+              <p>Data User</p>
+            </article>
+          </div>
+          <div className="tile is-parent section__cards">
+            <article className="tile is-child box">
+              <Board />
+            </article>
+          </div>
+        </div>
+        <div className="tile is-parent">
+          <article className="tile is-child box">
+            <p>Time and points</p>
+          </article>
+        </div>
+      </div>
+      <div className="tile is-parent">
+        <article className="tile is-child box">
+          <p>Cards win</p>
+        </article>
+      </div>
     </div>
   );
 }

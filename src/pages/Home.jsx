@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
-import { purple } from "@material-ui/core/colors";
 
-import "../styles/pages/home.css";
+import "../styles/pages/home.sass";
 
 function Home() {
-
   return (
     <div className="home">
       <div className="container">
@@ -18,9 +15,9 @@ function Home() {
           </p>
         </div>
         <div className="container__description--button">
-            <Button variant="text" style={{backgroundColor: purple['500'], fontSize: 16, color:'#ffffff'}} component={Link} to="/game" size="large">
-              Play
-            </Button>
+          <Link to="/game" className="button is-link is-large">
+            Play
+          </Link>
         </div>
       </div>
     </div>
