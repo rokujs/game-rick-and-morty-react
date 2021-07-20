@@ -1,10 +1,12 @@
 import React from 'react'
 
 import ListOfCards from '../ListOfCards'
+import './index.sass'
 
 function Board() {
   return (
-    <div>
+    <div className='Board'>
+      <ListOfCards />
       <ListOfCards />
     </div>
   )

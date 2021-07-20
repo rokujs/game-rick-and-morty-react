@@ -36,7 +36,7 @@ function ListOfCards() {
   }
 
   return characters.map(({ id, name: nameCharacter, image }) => (
-    <Card key={id} id={id} image={image} name={nameCharacter} />
+    <Card key={id} id={id} image={image} name={nameCharacter}/>
   ));
 }
 
