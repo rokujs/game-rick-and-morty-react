@@ -1,28 +1,50 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
+
+import CardContext from "../../context/CardContext";
 
 import "./index.sass";
 
-function Card({ name, id, image }) {
+function Card({ name, id, image, imageCover }) {
   const [isHidden, setIsHidden] = useState(true);
+  const { firstCard, secondCard, setFirstCard, setSecondCard, card, setCard } =
+    useContext(CardContext);
 
   const onClose = useCallback(() => {
-    setIsHidden(false);
-    console.log("nana");
-    setTimeout(() => {
-      setIsHidden(true);
-    }, 4000);
-  }, [])
-  
+    if (!firstCard || !secondCard) {
+      setIsHidden(false);
+      setTimeout(() => {
+        setIsHidden(true);
+        if (!firstCard) {
+          setFirstCard(false);
+        } else {
+          if (!secondCard) {
+            setSecondCard(false);
+          }
+        }
+      }, 2000);
+    }
+
+    if (!firstCard) {
+      setFirstCard(true);
+      setCard(id);
+    } else {
+      if (!secondCard) {
+        setTimeout(() => {
+          if (card === id) alert("You win");
+        }, 500);
+
+        setSecondCard(true);
+      }
+    }
+  }, [firstCard, secondCard, setFirstCard, setSecondCard, card]);
+
   if (isHidden) {
     return (
       <button className="card__button" onClick={onClose}>
         <div className="card">
           <div className="card-image Cover">
             <figure className="image is-1by1">
-              <img
-                src="https://i.pinimg.com/originals/5b/53/73/5b537363393dc26c68b566fe482eb32d.png"
-                alt="Cover"
-              />
+              <img src={imageCover} alt="Cover" />
             </figure>
           </div>
         </div>
