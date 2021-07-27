@@ -3,7 +3,7 @@ import React from 'react'
 import './index.sass'
 
 // eslint-disable-next-line react/prop-types
-function ContentCard ({ nameCharacter, image, imageCover, handleCover, isHidden, isDelete }) {
+function ContentCard ({ nameCharacter, image, imageCover, handleCover, isHidden = false, isDelete = false }) {
   if (isDelete) {
     return <div></div>
   }
