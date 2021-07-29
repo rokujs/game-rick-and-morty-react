@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useContext, useCallback, useEffect } from 'react'
 
 import CardContext from '../../context/CardContext'
 import CardsListContext from '../../context/CardListContext'
@@ -8,26 +8,27 @@ import getOneCharacter from '../../services/getOneCharacter'
 
 import ContentCard from '../ContentCard'
 
-function Card ({ nameCharacter, image, imageCover, id, active, characters, setCharacters }) {
+function Card ({ nameCharacter, image, imageCover, id, active, characters, setCharacters, firstCard, secondCard, setFirstCard, setSecondCard }) {
   const [isHidden, setIsHidden] = useState(true)
 
-  const { firstCard, secondCard, setFirstCard, setSecondCard, card, setCard } =
+  const { card, setCard } =
     useContext(CardContext)
   const { setCardsList } = useContext(CardsListContext)
+
+  useEffect(() => {
+    console.log('nana')
+    if (secondCard) {
+      setTimeout(() => {
+        setIsHidden(true)
+        setSecondCard(false)
+        setFirstCard(false)
+      }, 2000)
+    }
+  }, [secondCard])
 
   const handleCover = useCallback(() => {
     if (!firstCard || !secondCard) {
       setIsHidden(false)
-      setTimeout(() => {
-        setIsHidden(true)
-        if (!firstCard) {
-          setFirstCard(false)
-        } else {
-          if (!secondCard) {
-            setSecondCard(false)
-          }
-        }
-      }, 2000)
     }
 
     if (!firstCard) {
@@ -64,4 +65,4 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
   />
 }
 
-export default React.memo(Card)
+export default Card

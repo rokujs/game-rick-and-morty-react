@@ -17,6 +17,13 @@ function ContentCard ({ nameCharacter, image, imageCover, handleCover, isHidden 
               <img src={imageCover} alt="Cover" />
             </figure>
           </div>
+          <div className="card-content">
+        <div className="media-content">
+          <p className="subtitle">
+            {nameCharacter}
+          </p>
+        </div>
+      </div>
         </div>
       </button>
     )

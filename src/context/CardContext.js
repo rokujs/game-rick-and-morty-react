@@ -3,12 +3,10 @@ import React, { useState } from 'react'
 const Context = React.createContext({})
 
 export function CardContext ({ children }) {
-  const [firstCard, setFirstCard] = useState(false)
-  const [secondCard, setSecondCard] = useState(false)
   const [card, setCard] = useState(null)
 
   return (
-    <Context.Provider value={{ firstCard, secondCard, setFirstCard, setSecondCard, card, setCard }}>{children}</Context.Provider>
+    <Context.Provider value={{ card, setCard }}>{children}</Context.Provider>
   )
 }
 

@@ -9,6 +9,8 @@ function ListOfCards () {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [characters, setCharacters] = useState([])
+  const [firstCard, setFirstCard] = useState(false)
+  const [secondCard, setSecondCard] = useState(false)
 
   useEffect(() => {
     const imageCover = new Image()
@@ -62,6 +64,10 @@ function ListOfCards () {
       setCharacters={setCharacters}
       characters={characters}
       active={active}
+      firstCard={firstCard}
+      secondCard={secondCard}
+      setFirstCard={setFirstCard}
+      setSecondCard={setSecondCard}
     />
   ))
 }
