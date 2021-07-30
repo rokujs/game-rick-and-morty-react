@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Board from '../components/Board'
-import CardsWon from '../components/CardsWon'
+import Gallery from '../components/Gallery'
 import { CardsListContext } from '../context/CardListContext'
 
 import '../styles/pages/game.sass'
@@ -14,7 +14,7 @@ function Game () {
           <CardsListContext>
             <div className="tile is-parent is-vertical is-2">
               <article className="tile is-child box">
-                <CardsWon />
+                <Gallery />
               </article>
             </div>
             <div className="tile is-parent section__cards">

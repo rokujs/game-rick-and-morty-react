@@ -16,7 +16,6 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
   const { setCardsList } = useContext(CardsListContext)
 
   useEffect(() => {
-    console.log('nana')
     if (secondCard) {
       setTimeout(() => {
         setIsHidden(true)

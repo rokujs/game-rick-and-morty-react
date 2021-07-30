@@ -1,44 +1,44 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/index.js"),
+  entry: path.resolve(__dirname, './src/index.js'),
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "js/bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'js/bundle.js'
   },
-  mode: "development",
+  mode: 'development',
   devServer: {
     hot: true,
     open: true,
-    port: 3000,
+    port: 3000
   },
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.(js|jsx)$/,
-        use: "babel-loader",
-        exclude: /node_modules/,
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
-        use: [{ loader: "url-loader", options: { limit: 90000 } }],
-      },
-    ],
+        use: [{ loader: 'url-loader', options: { limit: 90000 } }]
+      }
+    ]
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: "Rick and Morty",
-      template: path.resolve(__dirname, "./public/index.html"),
-    }),
-  ],
-};
+      title: 'Rick and Morty',
+      template: path.resolve(__dirname, './public/index.html')
+    })
+  ]
+}
