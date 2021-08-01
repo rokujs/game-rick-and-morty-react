@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
-import ContentCard from '../ContentCard'
+import Card from '../Card'
 
 import './style.sass'
 
@@ -12,7 +12,7 @@ function WonCards ({ card, handlePrev, handleNext, isDisabled }) {
     <div className="p-6 gallery">
       {card && card.map(({ name, image, id }) => (
         <div key={id} className="block">
-          <ContentCard image={image} nameCharacter={name} />
+          <Card image={image} nameCharacter={name} hidden={false} id={id} />
         </div>
       ))}
       <div className="section__button">

@@ -1,9 +1,18 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 
 import './index.sass'
 
 // eslint-disable-next-line react/prop-types
-function ContentCard ({ nameCharacter, image, imageCover, handleCover, isHidden = false, isDelete = false }) {
+function ContentCard ({
+  nameCharacter,
+  image,
+  imageCover,
+  handleCover,
+  isHidden = false,
+  isDelete = false,
+  info
+}) {
   if (isDelete) {
     return <div></div>
   }
@@ -18,12 +27,10 @@ function ContentCard ({ nameCharacter, image, imageCover, handleCover, isHidden 
             </figure>
           </div>
           <div className="card-content">
-        <div className="media-content">
-          <p className="subtitle">
-            {nameCharacter}
-          </p>
-        </div>
-      </div>
+            <div className="media-content">
+              <p className="subtitle">{nameCharacter}</p>
+            </div>
+          </div>
         </div>
       </button>
     )
@@ -31,19 +38,19 @@ function ContentCard ({ nameCharacter, image, imageCover, handleCover, isHidden 
 
   return (
     <div className="card">
-      <div className="card-image">
-        <figure className="image is-1by1">
-          <img src={image} alt="Card" />
-        </figure>
-      </div>
-      <div className="card-content">
-        <div className="media-content">
-          <p className="subtitle">
-            {nameCharacter}
-          </p>
+        <button className="card__button" onClick={info}>
+        <div className="card-image">
+          <figure className="image is-1by1">
+            <img src={image} alt="Card" />
+          </figure>
         </div>
+        <div className="card-content">
+          <div className="media-content">
+            <p className="subtitle">{nameCharacter}</p>
+          </div>
+        </div>
+    </button>
       </div>
-    </div>
   )
 }
 

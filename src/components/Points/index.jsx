@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
-function PointsAndUser ({ points }) {
+function Points ({ points }) {
   return (
     <div>
       <div className="isPrimary">
@@ -11,4 +11,4 @@ function PointsAndUser ({ points }) {
   )
 }
 
-export default PointsAndUser
+export default Points

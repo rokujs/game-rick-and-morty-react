@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import CardContext from '../../context/CardListContext'
 
-import PointsAndUser from '../PointsAndUser'
+import Points from '../Points'
 import Timer from '../Timer'
 
 function InfoGame () {
@@ -41,7 +41,7 @@ function InfoGame () {
   return (
     <div className="is-flex is-justify-content-space-between is-align-content-center">
       <Timer seconds={seconds} minutes={minutes} />
-      <PointsAndUser points={numberCards}/>
+      <Points points={numberCards}/>
     </div>
   )
 }

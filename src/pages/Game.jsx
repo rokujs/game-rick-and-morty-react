@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { CardsListContext } from '../context/CardListContext'
+
 import Board from '../components/Board'
 import Gallery from '../components/Gallery'
+import InfoCharacter from '../components/InfoCharacter'
 import InfoGame from '../components/InfoGame'
-import { CardsListContext } from '../context/CardListContext'
 
 import '../styles/pages/game.sass'
 
@@ -30,12 +32,12 @@ function Game () {
             </article>
           </div>
         </div>
+        <div className="tile is-parent">
+          <article className="tile is-child box">
+            <InfoCharacter />
+          </article>
+        </div>
       </CardsListContext>
-      <div className="tile is-parent">
-        <article className="tile is-child box">
-          <p>Data character</p>
-        </article>
-      </div>
     </div>
   )
 }

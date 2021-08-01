@@ -17,7 +17,6 @@ function Timer ({ seconds, minutes }) {
           </svg>
         </i>
         &nbsp;
-        &nbsp;
         <strong>{minutes}:{seconds}</strong>
       </span>
       </div>

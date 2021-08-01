@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useContext, useCallback, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 import CardContext from '../../context/CardContext'
 import CardsListContext from '../../context/CardListContext'
@@ -8,12 +8,12 @@ import getOneCharacter from '../../services/getOneCharacter'
 
 import ContentCard from '../ContentCard'
 
-function Card ({ nameCharacter, image, imageCover, id, active, characters, setCharacters, firstCard, secondCard, setFirstCard, setSecondCard }) {
-  const [isHidden, setIsHidden] = useState(true)
+function Card ({ nameCharacter, image, imageCover, id, active, characters, setCharacters, firstCard, secondCard, setFirstCard, setSecondCard, hidden = true }) {
+  const [isHidden, setIsHidden] = useState(hidden)
 
   const { card, setCard } =
     useContext(CardContext)
-  const { setCardsList } = useContext(CardsListContext)
+  const { setCardsList, setCardInfo } = useContext(CardsListContext)
 
   useEffect(() => {
     if (secondCard) {
@@ -25,7 +25,7 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
     }
   }, [secondCard])
 
-  const handleCover = useCallback(() => {
+  const handleCover = () => {
     if (!firstCard || !secondCard) {
       setIsHidden(false)
     }
@@ -52,7 +52,11 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
         setSecondCard(true)
       }
     }
-  }, [firstCard, secondCard, setFirstCard, setSecondCard, card, characters, setCharacters, active])
+  }
+
+  const handleInfoCard = () => {
+    getOneCharacter({ id }).then(setCardInfo)
+  }
 
   return <ContentCard
     nameCharacter={nameCharacter}
@@ -61,6 +65,7 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
     handleCover={handleCover}
     isHidden={isHidden}
     isDelete={active}
+    info={handleInfoCard}
   />
 }
 
