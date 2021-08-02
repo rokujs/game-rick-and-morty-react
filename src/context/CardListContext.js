@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Context = React.createContext({})
 
 export function CardsListContext ({ children }) {
-  const [cardsList, setCardsList] = useState([])
+  const [cardsList, setCardsList] = useState(null)
   const [cardInfo, setCardInfo] = useState(null)
 
   return (

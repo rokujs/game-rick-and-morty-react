@@ -1,17 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react'
 
 import cardContext from '../../context/CardListContext'
+import Loading from '../Loading'
+import getCharacter from '../../services/getOneCharacter'
 
 function InfoCharacter () {
   const [character, setCharacter] = useState(null)
   const { cardInfo } = useContext(cardContext)
 
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
-    setCharacter(cardInfo)
+    if (typeof cardInfo === 'number') {
+      setLoading(true)
+      getCharacter({ id: cardInfo }).then((data) => {
+        setLoading(false)
+        console.log(data)
+        setCharacter(data)
+      })
+    }
   }, [cardInfo])
 
   const handleClose = () => {
     setCharacter(null)
+  }
+
+  if (loading) {
+    return <Loading />
   }
 
   return (

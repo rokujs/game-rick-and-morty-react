@@ -13,12 +13,13 @@ function ListOfCards () {
   const [secondCard, setSecondCard] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
+
     const imageCover = new Image()
     imageCover.src = IMAGE_COVER
+
     getCharacters()
       .then(data => {
-        setLoading(true)
-        setError(false)
         const { results } = data
         const deck = shuffle(results)
 
@@ -28,6 +29,8 @@ function ListOfCards () {
         })
 
         setCharacters(deck)
+        setLoading(true)
+        setError(false)
       })
       .catch(err => {
         console.error(err)
@@ -50,7 +53,7 @@ function ListOfCards () {
     return <p>Error...</p>
   }
 
-  if (!loading) {
+  if (loading) {
     return <p>Loading...</p>
   }
 

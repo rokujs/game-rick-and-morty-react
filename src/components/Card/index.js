@@ -4,8 +4,6 @@ import React, { useState, useContext, useEffect } from 'react'
 import CardContext from '../../context/CardContext'
 import CardsListContext from '../../context/CardListContext'
 
-import getOneCharacter from '../../services/getOneCharacter'
-
 import ContentCard from '../ContentCard'
 
 function Card ({ nameCharacter, image, imageCover, id, active, characters, setCharacters, firstCard, secondCard, setFirstCard, setSecondCard, hidden = true }) {
@@ -36,7 +34,7 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
     } else {
       if (!secondCard) {
         if (card === id) {
-          getOneCharacter({ id }).then(setCardsList)
+          setCardsList(id)
 
           setTimeout(() => {
             const newCharacter = characters.map((character) => {
@@ -55,7 +53,7 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
   }
 
   const handleInfoCard = () => {
-    getOneCharacter({ id }).then(setCardInfo)
+    setCardInfo(id)
   }
 
   return <ContentCard

@@ -1,6 +1,9 @@
 import React, { useEffect, useContext, useState, useReducer } from 'react'
 
 import cardsContext from '../../context/CardListContext'
+import getCharacter from '../../services/getOneCharacter'
+import Loading from '../Loading'
+
 import WonCards from '../WonCards'
 
 let indexPage = 0
@@ -45,6 +48,7 @@ const reducer = (state, action) => {
 
 function Gallery () {
   const { cardsList } = useContext(cardsContext)
+  const [loading, setLoading] = useState(false)
   const [card, setCard] = useState([])
   const [viewCards, setViewCards] = useState(null)
   const [state, dispatch] = useReducer(reducer, {
@@ -65,18 +69,24 @@ function Gallery () {
   }, [card, viewCards])
 
   useEffect(() => {
-    if (!Array.isArray(cardsList)) {
-      if (card) {
-        setCard((cards) => [...cards, cardsList])
-      } else {
-        const aux = []
-        aux[0] = cardsList
-        setCard(aux)
-      }
+    if (typeof cardsList === 'number') {
+      setLoading(true)
+      getCharacter({ id: cardsList })
+        .then(newCard => {
+          if (card) {
+            setCard((cards) => [...cards, newCard])
+          } else {
+            const aux = []
+            aux[0] = newCard
+            setCard(aux)
+          }
 
-      if (card.length < 4) {
-        setViewCards([...card, cardsList])
-      }
+          if (card.length < 4) {
+            setViewCards([...card, newCard])
+          }
+
+          setLoading(false)
+        })
     }
   }, [cardsList])
 
@@ -103,6 +113,8 @@ function Gallery () {
     indexPage -= 1
     setViewCards(newCards)
   }
+
+  if (loading) return <Loading />
 
   return viewCards && <WonCards card={viewCards} handlePrev={handlePrev} handleNext={handleNext} isDisabled={state} />
 }
