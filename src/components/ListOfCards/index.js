@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Card from '../Card'
 import getCharacters from '../../services/getCharacters'
+import Loading from '../Loading'
 
 const IMAGE_COVER = 'https://i.pinimg.com/originals/5b/53/73/5b537363393dc26c68b566fe482eb32d.png'
 
@@ -29,7 +30,7 @@ function ListOfCards () {
         })
 
         setCharacters(deck)
-        setLoading(true)
+        setLoading(false)
         setError(false)
       })
       .catch(err => {
@@ -54,7 +55,7 @@ function ListOfCards () {
   }
 
   if (loading) {
-    return <p>Loading...</p>
+    return <Loading />
   }
 
   return characters.map(({ id, name: nameCharacter, image, index, active }) => (
