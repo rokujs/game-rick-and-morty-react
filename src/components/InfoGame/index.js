@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 
 import CardContext from '../../context/CardListContext'
+import UserContext from '../../context/UserContext'
 
 import Points from '../Points'
 import Timer from '../Timer'
+import User from '../User'
 
 function InfoGame () {
   const { cardsList } = useContext(CardContext)
+  const { user } = useContext(UserContext)
   const [numberCards, setNumberCards] = useState(-1)
   const [minutes, setMinutes] = useState(10)
   const [seconds, setSeconds] = useState('00')
@@ -41,6 +44,7 @@ function InfoGame () {
   return (
     <div className="is-flex is-justify-content-space-between is-align-content-center">
       <Timer seconds={seconds} minutes={minutes} />
+      <User user={user} />
       <Points points={numberCards}/>
     </div>
   )

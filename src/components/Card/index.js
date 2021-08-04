@@ -19,7 +19,7 @@ function Card ({ nameCharacter, image, imageCover, id, active, characters, setCh
         setIsHidden(true)
         setSecondCard(false)
         setFirstCard(false)
-      }, 2000)
+      }, 500)
     }
   }, [secondCard])
 
