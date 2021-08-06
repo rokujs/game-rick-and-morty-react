@@ -9,8 +9,7 @@ import ContentCard from '../ContentCard'
 function Card ({ nameCharacter, image, imageCover, id, active, characters, setCharacters, firstCard, secondCard, setFirstCard, setSecondCard, hidden = true }) {
   const [isHidden, setIsHidden] = useState(hidden)
 
-  const { card, setCard } =
-    useContext(CardContext)
+  const { card, setCard } = useContext(CardContext)
   const { setCardsList, setCardInfo } = useContext(CardsListContext)
 
   useEffect(() => {

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import Card from '../Card'
 import getCharacters from '../../services/getCharacters'
 import Loading from '../Loading'
+import ContextLevel from '../../context/UserContext'
 
 const IMAGE_COVER = 'https://i.pinimg.com/originals/5b/53/73/5b537363393dc26c68b566fe482eb32d.png'
 
@@ -12,17 +13,20 @@ function ListOfCards () {
   const [characters, setCharacters] = useState([])
   const [firstCard, setFirstCard] = useState(false)
   const [secondCard, setSecondCard] = useState(false)
+  const { nextLevel, setNextLevel } = useContext(ContextLevel)
 
   useEffect(() => {
     setLoading(true)
 
     const imageCover = new Image()
     imageCover.src = IMAGE_COVER
+    console.log(nextLevel)
 
-    getCharacters()
+    getCharacters({ newUrl: nextLevel })
       .then(data => {
-        const { results } = data
+        const { results, info } = data
         const deck = shuffle(results)
+        setNextLevel(info.next)
 
         results.forEach(({ image }) => {
           const img = new Image()

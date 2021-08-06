@@ -8,7 +8,7 @@ function Board () {
   return (
     <div className="Board">
       <CardContext>
-        <ListOfCards />
+          <ListOfCards />
       </CardContext>
     </div>
   )

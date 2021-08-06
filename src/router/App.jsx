@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Redirect, Switch, BrowserRouter as Router } from 'react-router-dom'
 
 import { UserContext } from '../context/UserContext'
 
@@ -13,6 +13,9 @@ const App = () => (
       <UserContext>
         <Route exact path="/" component={Home} />
         <Route exact path="/game" component={Game} />
+        <Route path='/newGame'>
+          <Redirect to='/game' />
+        </Route>
       </UserContext>
       <Route component={NoMatch} />
     </Switch>
